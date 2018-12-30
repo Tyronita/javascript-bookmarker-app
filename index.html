@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>
+        Bookmarker App
+    </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Thasadith" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="container">
+
+        <h1>Bookmarker App</h1>
+
+        <!-- Form for adding bookmark -->
+        <form id="add-bookmark">
+            <!-- Add bookmark name -->
+            <label>
+                Site Name: <input type="text" name="name" placeholder="Example Website">
+            </label>
+            <!-- Add bookmark URL -->
+            <label>
+                Site Url: <input type="url" name="url" placeholder="https://example.com" pattern="https://.*">
+            </label>
+            <!-- Submit Button -->
+            <button type="submit" name="submit" class="btn btn-primary">
+                Submit
+            </button>
+
+        </form>
+
+        <!-- Added Bookmarks -->
+        <div id="rendered-bookmarks">
+            
+        </div>
+
+    </div>
+    <script src="uuidv4.js"></script>
+    <script src="bookmarker-functions.js"></script>
+    <script src="bookmarker-app.js"></script>
+</body>
+</html>
