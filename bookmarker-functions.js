@@ -1,32 +1,27 @@
-const saveBookmarks = function (bookmarks) {
+const saveBookmarks = (bookmarks) => {
     localStorage.setItem('bookmarks', JSON.stringify(bookmarks))
 }
 
 // Fetch bookmarks data from local storage or return an empty array
-const fetchBookmarksData = function () {
+const fetchBookmarksData = () => {
     const JSONbookmarks = localStorage.getItem('bookmarks')
-    if (JSONbookmarks !== null) {
-        return JSON.parse(JSONbookmarks)
-    } else {
+    try {
+        return JSONbookmarks ? JSON.parse(JSONbookmarks) : []
+    } catch (e) {
         return []
     }
 }
 
-const deleteBookmark = function (bmID) {
+const deleteBookmark = (bmID) => {
     // Find the index of the bookmark via matching the unique IDs
-    const bookmarkIndex = bookmarks.findIndex( function (bookmark) {
-        return bmID === bookmark.id
-    })
+    const bookmarkIndex = bookmarks.findIndex((bookmark) => bmID === bookmark.id)
     // If found:
     if (bookmarkIndex > -1) {
         bookmarks.splice(bookmarkIndex, 1)
     }
 }
 
-const editBookmark = function () {
-}
-
-const generateBookmarkDOM = function (bookmark) {
+const generateBookmarkDOM = (bookmark) => {
     // Create the elements
     const bookmarkElement = document.createElement('div')
     const bookmarkName = document.createElement('span')
@@ -45,7 +40,8 @@ const generateBookmarkDOM = function (bookmark) {
     bookmarkName.className = 'bookmark-name'
     bookmarkElement.appendChild(bookmarkName)
 
-    // Edit Bookmark Inputs
+    // Edit Bookmark Inputs -
+
     // Website name:
     nameLabel.textContent = 'Name: '
     nameInput.setAttribute('type','text')
@@ -63,10 +59,10 @@ const generateBookmarkDOM = function (bookmark) {
 
     // The edit button
     updateButton.textContent = 'Edit'
-    updateButton.className = 'btn btn-info'
+    updateButton.className = 'btn btn-info' // Bootsrtap styling
     bookmarkElement.appendChild(updateButton)
 
-    updateButton.addEventListener('click', function (e) {
+    updateButton.addEventListener('click', (e) => {
         // update button's text content set once in 'bookmarker-app.js'
         if (e.target.textContent === 'Edit') {
 
@@ -87,7 +83,6 @@ const generateBookmarkDOM = function (bookmark) {
         }
 
         else if (e.target.textContent === 'Update') {
-            // 
             e.target.textContent = 'Edit'
 
             // Save inputted data
@@ -108,10 +103,10 @@ const generateBookmarkDOM = function (bookmark) {
 
     // Delete Button
     deleteButton.textContent = 'Delete'
-    deleteButton.className = 'btn btn-danger'
+    deleteButton.className = 'btn btn-danger' // Bootsrtap styling
     bookmarkElement.appendChild(deleteButton)
     // Event - deletes the specific bookmark
-    deleteButton.addEventListener('click', function (e) {
+    deleteButton.addEventListener('click', () => {
         deleteBookmark(bookmark.id) // Removes the bookmarks
         saveBookmarks(bookmarks) // Saves it 
         renderBookmarks(bookmarks)// rerenders
@@ -119,11 +114,11 @@ const generateBookmarkDOM = function (bookmark) {
 
     // The visit button
     visitButton.textContent = 'Visit'
-    visitButton.className = 'btn btn-success'
+    visitButton.className = 'btn btn-success' // Bootsrtap styling
     visitButton.setAttribute('title', bookmark.url)
     bookmarkElement.appendChild(visitButton)
     // Event - opens the bookmarks's saved url in a new tab
-    visitButton.addEventListener('click', function (e) {
+    visitButton.addEventListener('click', () => {
         window.open(bookmark.url);
     })
 
@@ -132,14 +127,14 @@ const generateBookmarkDOM = function (bookmark) {
 }
 
 // Render the bookmarks and print to display
-const renderBookmarks = function (bookmarks) {
+const renderBookmarks = (bookmarks) => {
 
     const bookmarkArea = document.querySelector('#rendered-bookmarks')
     // Clear the area before appending bookmark element
     bookmarkArea.innerHTML = ''
 
     // Loop through every bookmark and print them into a div
-    bookmarks.forEach( function (bookmark) {
+    bookmarks.forEach((bookmark) => {
         bookmarkArea.appendChild(generateBookmarkDOM(bookmark))
     })
 

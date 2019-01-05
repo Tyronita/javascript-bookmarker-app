@@ -7,7 +7,7 @@ const formElements = document.querySelector('#add-bookmark').elements
 // Set the text content for an if condition
 document.querySelectorAll('.update-button').textContent = 'Edit'
 
-formElements.submit.addEventListener('click', function (e) {
+formElements.submit.addEventListener('click', (e) =>  {
     e.preventDefault() // Prevents refresh
     // Take the values from inputs and push their object into the bookmarks array
     bookmarks.push({
