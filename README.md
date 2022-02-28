@@ -4,9 +4,9 @@ A simple app to bookamark(save) a user's favourite websites in localStorage.
 
 A user can input and submit said website's name and url in a form.
 All bookmarks are rendered and displayed below the form with 3 buttons:
-one to update the bookmark's information,
-one to delete the bookmark itself
-and one for visiting the website.
+- one to update the bookmark's information,
+- one to delete the bookmark itself
+- and one for visiting the website.
 
 The app uses bootstrap to style the bookmark's buttons.
 Each bookmark is also supplied with a universally unique identifier which is supplied by a function in the third party library file: 'uuidv4.js'.
