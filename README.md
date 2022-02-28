@@ -1,7 +1,6 @@
 # javascript-bookmarker-app
 
 A simple app to bookamark(save) a user's favourite websites in localStorage.
-# https://javascript-bookmarker-app--tyronita.repl.co/
 
 A user can input and submit said website's name and url in a form.
 All bookmarks are rendered and displayed below the form with 3 buttons:
